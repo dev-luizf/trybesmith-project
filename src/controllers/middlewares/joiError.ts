@@ -15,8 +15,6 @@ const joiError: ErrorRequestHandler = (err, _req, res, next) => {
       code = 422;
   }
 
-  console.log(code, 23);
-
   return res.status(code).json({ error: err.message });
 };
 

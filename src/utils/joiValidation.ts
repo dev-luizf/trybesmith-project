@@ -5,6 +5,4 @@ const validateWithJoi = (schema: Schema, payload: object): void => {
   if (error) throw error;
 };
 
-export {
-  validateWithJoi,
-};
+export default validateWithJoi;

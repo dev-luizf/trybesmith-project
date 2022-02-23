@@ -1,9 +1,15 @@
 import { ErrorRequestHandler } from 'express';
-import DomainError from '../../utils/DomainError';
+import APIError from '../../utils/errorClass';
 
-const errorHandler: ErrorRequestHandler = (err: DomainError, _req, res, _next) => {
+const errorHandler: ErrorRequestHandler = (err: APIError, _req, res, _next) => {
   interface Map {
     [key: string]: number | undefined,
+  }
+
+  // unexpected error
+  if (!err.code) {
+    console.log(err);
+    return res.status(500).json({ error: 'Server error' });
   }
 
   const errorMap: Map = {
@@ -13,13 +19,10 @@ const errorHandler: ErrorRequestHandler = (err: DomainError, _req, res, _next) =
     unauthorized: 401,
   };
 
-  const status = errorMap[err.code];
+  const code: number = errorMap[err.code] || 500;
 
-  if (!status) {
-    return res.status(500).json({ error: err.code });
-  }
-
-  res.status(status).json({ error: err.code });
+  // domain error
+  res.status(code).json({ error: err.message });
 };
 
 export default errorHandler;
