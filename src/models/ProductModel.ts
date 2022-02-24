@@ -1,5 +1,5 @@
 import { Product, CreatedProduct, UpdateProduct } from '../interfaces';
-import { prisma } from '../models/connection';
+import { prisma } from './connection';
 
 const create = async (product: Product): Promise<{ item: CreatedProduct }> => {
   const newProduct: CreatedProduct = await prisma.products.create({ data: product });

@@ -1,4 +1,4 @@
-import { prisma } from '../models/connection';
+import { prisma } from './connection';
 
 const create = async (userId: number, products: number[]) => {
   const completedOrder = await prisma.$transaction(async (t) => {

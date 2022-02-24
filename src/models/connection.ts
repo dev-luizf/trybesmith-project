@@ -14,8 +14,8 @@ const connection = mysql.createPool({
 
 export default connection;
 
-//Gambiarra que peguei do colega de turma Gabriel Gaspar.
-//É necessário, pois o prisma ORM usa variavéis de ambiente que
+// Gambiarra que peguei do colega de turma Gabriel Gaspar.
+// É necessário, pois o prisma ORM usa variavéis de ambiente que
 // não podem ser acessadas pelo evaluator
 export const prisma = new PrismaClient({
   datasources: {
