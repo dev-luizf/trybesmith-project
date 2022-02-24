@@ -30,8 +30,7 @@ const getById = async (id: number) => {
 
   const products = order.products.map((product) => product.id);
   return {
-    id: order.id,
-    userId: order.userId,
+    ...order,
     products,
   };
 };
@@ -45,6 +44,7 @@ const getAll = async () => {
     ...order,
     products: order.products.map((p) => p.id),
   }));
+  
   return result;
 };
 
