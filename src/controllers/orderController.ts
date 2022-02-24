@@ -15,6 +15,19 @@ const create: RequestHandler = async (req: RequestAuth, res) => {
   res.status(201).json({ order });
 };
 
+const getById: RequestHandler = async (req, res) => {
+  const { id } = req.params;
+  const order = await orderService.getById(Number(id));
+  res.status(200).json(order);
+};
+
+const getAll: RequestHandler = async (req, res) => {
+  const orders = await orderService.getAll();
+  res.status(200).json(orders);
+};
+
 export default {
   create,
+  getById,
+  getAll,
 };

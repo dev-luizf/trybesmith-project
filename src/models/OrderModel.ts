@@ -18,6 +18,38 @@ const create = async (userId: number, products: number[]) => {
   return completedOrder;
 };
 
+const getById = async (id: number) => {
+  const order = await prisma.orders.findUnique({ 
+    where: { id },
+    include: {
+      products: {},
+    },
+  });
+
+  if (!order) return null;
+
+  const products = order.products.map((product) => product.id);
+  return {
+    id: order.id,
+    userId: order.userId,
+    products,
+  };
+};
+
+const getAll = async () => {
+  const orders = await prisma.orders.findMany({
+    include: { products: {} },
+  });
+
+  const result = orders.map((order) => ({
+    ...order,
+    products: order.products.map((p) => p.id),
+  }));
+  return result;
+};
+
 export default {
   create,
+  getById,
+  getAll,
 };

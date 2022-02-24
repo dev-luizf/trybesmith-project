@@ -15,6 +15,23 @@ const create = async (userId: number, products: number[]) => {
   return order;
 };
 
+const getById = async (id: number) => {
+  const order = await OrderModel.getById(id);
+
+  if (!order) {
+    throw new APIError('Order not found', 'notFound');
+  }
+
+  return order;
+};
+
+const getAll = async () => {
+  const orders = await OrderModel.getAll();
+  return orders;
+};
+
 export default {
   create,
+  getById,
+  getAll,
 };
