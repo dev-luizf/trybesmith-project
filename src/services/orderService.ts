@@ -1,5 +1,4 @@
-import { ProductModel } from '../models';
-import OrderModel from '../models/OrderModel';
+import { ProductModel, OrderModel } from '../models';
 import APIError from '../utils/errorClass';
 
 const create = async (userId: number, products: number[]) => {

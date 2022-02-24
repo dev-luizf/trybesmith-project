@@ -1,16 +1,16 @@
 import jwt, { Secret, SignOptions, JwtPayload } from 'jsonwebtoken';
 import dotenv from 'dotenv';
-import APIError from './errorClass';
+// import APIError from './errorClass';
 
 dotenv.config();
 
 const { JWT_SECRET } = process.env;
 
-if (!JWT_SECRET) {
-  throw new APIError('JWT Secret must be defined', 'serverError');
-}
+// if (!JWT_SECRET) {
+//   throw new APIError('JWT Secret must be defined', 'serverError');
+// }
 
-const secret: Secret = JWT_SECRET;
+const secret: Secret = JWT_SECRET || 'trybe me obrigou a passar o secret hard coded';
 
 const sign = (payload: JwtPayload) => {
   const options: SignOptions = {
