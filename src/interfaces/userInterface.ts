@@ -1,10 +1,15 @@
-export interface User {
+interface User {
   username: string,
   classe: string,
   level: number,
   password: string,
 }
 
-export interface CreatedUser extends User {
+interface CreatedUser extends User {
   id: number,
 }
+
+export {
+  User,
+  CreatedUser,
+};

@@ -1,4 +1,4 @@
-import jwt, { Secret, SignOptions } from 'jsonwebtoken';
+import jwt, { Secret, SignOptions, JwtPayload } from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import APIError from './errorClass';
 
@@ -12,7 +12,7 @@ if (!JWT_SECRET) {
 
 const secret: Secret = JWT_SECRET;
 
-const sign = (payload: object) => {
+const sign = (payload: JwtPayload) => {
   const options: SignOptions = {
     algorithm: 'HS256',
     expiresIn: '1h',
