@@ -13,6 +13,7 @@ const errorHandler: ErrorRequestHandler = (err: APIError | Error, _req, res, _ne
     notFound = 404,
     badRequest = 400,
     unauthorized = 401,
+    serverError = 500,
   };
 
   const statusCode: number = errorMap[err.code];

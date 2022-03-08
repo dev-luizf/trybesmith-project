@@ -1,8 +1,8 @@
-type httpCode = 'alreadyExists' | 'notFound' | 'badRequest' | 'unauthorized';
+type httpCode = 'alreadyExists' | 'notFound' | 'badRequest' | 'unauthorized' | 'serverError';
 
 class APIError {
-  private code: httpCode;
-  private message: string;
+  code: httpCode;
+  message: string;
 
   constructor(message: string, code: httpCode) {
     this.code = code;
