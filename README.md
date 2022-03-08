@@ -1,6 +1,6 @@
 # Trybesmith Project
 
-Este é meu **primeiro projeto** feito utilizando **TypeScript**. Ele foi desenvolvido durante o módulo de Back-End na Trybe e é basicamente uma **API** node com Express e TS, um **CRUD** simples com tema medieval.
+Este é meu **primeiro projeto** feito utilizando **TypeScript**. Ele foi desenvolvido durante o módulo de Back-End na Trybe e é basicamente uma **API** node com Express e TS. Um **CRUD** simples com tema medieval.
 
 ## Tecnologias e ferramentas:
 
