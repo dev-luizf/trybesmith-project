@@ -1,6 +1,6 @@
 import { RequestHandler } from 'express';
-import { JwtPayload } from 'jsonwebtoken';
 import { RequestAuth } from '../../interfaces';
+import TokenPayload from '../../interfaces/payloadInterface';
 import { verify } from '../../utils/jwtHelper';
 
 const auth: RequestHandler = (req: RequestAuth, res, next) => {
@@ -10,8 +10,8 @@ const auth: RequestHandler = (req: RequestAuth, res, next) => {
   }
 
   try {
-    const data = verify(token) as JwtPayload;
-    req.user = { id: data.id, username: data.username };
+    const data = verify(token) as TokenPayload;
+    req.user = { ...data };
   } catch (error) {
     console.log(error);
     return res.status(401).json({ error: 'Invalid token' });

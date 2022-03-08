@@ -1,9 +1,12 @@
-class APIError extends Error {
-  code?: string;
+type httpCode = 'alreadyExists' | 'notFound' | 'badRequest' | 'unauthorized';
 
-  constructor(message: string, code?: string) {
-    super(message);
+class APIError {
+  private code: httpCode;
+  private message: string;
+
+  constructor(message: string, code: httpCode) {
     this.code = code;
+    this.message = message;
   }
 }
 

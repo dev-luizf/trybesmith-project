@@ -17,7 +17,13 @@ const create: RequestHandler = async (req: RequestAuth, res) => {
 
 const getById: RequestHandler = async (req, res) => {
   const { id } = req.params;
-  const order = await orderService.getById(Number(id));
+  const orderId = Number(id);
+  
+  if(!orderId) {
+    return res.status(400).json({ error: 'Id must be a number'});
+  }
+  
+  const order = await orderService.getById(orderId);
   res.status(200).json(order);
 };
 

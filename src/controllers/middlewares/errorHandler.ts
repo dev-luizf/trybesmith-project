@@ -1,28 +1,24 @@
 import { ErrorRequestHandler } from 'express';
 import APIError from '../../utils/errorClass';
 
-const errorHandler: ErrorRequestHandler = (err: APIError, _req, res, _next) => {
-  interface Map {
-    [key: string]: number | undefined,
-  }
-
+const errorHandler: ErrorRequestHandler = (err: APIError | Error, _req, res, _next) => {
   // unexpected error
-  if (!err.code) {
+  if(err instanceof Error) {
     console.log(err);
-    return res.status(500).json({ error: 'Server error' });
+    return res.status(500).json({ error: 'Internal server error' });
   }
 
-  const errorMap: Map = {
-    alreadyExists: 409,
-    notFound: 404,
-    badRequest: 400,
-    unauthorized: 401,
+  enum errorMap {
+    alreadyExists = 409,
+    notFound = 404,
+    badRequest = 400,
+    unauthorized = 401,
   };
 
-  const code: number = errorMap[err.code] || 500;
+  const statusCode: number = errorMap[err.code];
 
   // domain error
-  res.status(code).json({ error: err.message });
+  res.status(statusCode).json({ error: err.message });
 };
 
 export default errorHandler;

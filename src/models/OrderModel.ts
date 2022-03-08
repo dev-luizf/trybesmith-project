@@ -19,6 +19,8 @@ const create = async (userId: number, products: number[]) => {
 };
 
 const getById = async (id: number) => {
+  console.log(typeof id);
+  
   const order = await prisma.orders.findUnique({ 
     where: { id },
     include: {

@@ -1,8 +1,8 @@
 import { Request } from 'express';
-import { JwtPayload } from 'jsonwebtoken';
+import TokenPayload from './payloadInterface';
 
 interface RequestAuth extends Request {
-  user?: JwtPayload,
+  user?: TokenPayload,
 }
 
 export default RequestAuth;
