@@ -21,7 +21,7 @@ Este é meu **primeiro projeto** feito utilizando **TypeScript**. Ele foi desenv
 
     ```
     JWT_SECRET=UM_JWT_SECRET
-    DATABASE_URL="mysql://DB_USER:DB_PASS@HOST:PORT/DB_PORT"
+    DATABASE_URL="mysql://DB_USER:DB_PASS@HOST:PORT/DB_NAME"
     ```
    
  3. Rode o projeto:
